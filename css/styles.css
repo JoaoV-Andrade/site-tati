@@ -21,7 +21,7 @@
 
   /* Neutros quentes — o chão de papel/linho do mundo */
   --paper:      #FBF7F2; /* fundo geral da página */
-  --sand-100:   #F2E9DC; /* fundo de seção alternada */
+  --sand-100:   #D9CDB0; /* fundo de seção alternada — caqui do studio original */
   --sand-200:   #E6D8C3; /* bordas, divisores finos */
   --sand-300:   #D8C5A8; /* contorno sutil de molduras de foto */
 
@@ -33,11 +33,11 @@
   --ink-300: #A89480;
   --off-white: #FBF9F6;
   --white:    #FFFFFF;
+  --brown-900: #6B4F3A; /* marrom das seções escuras — tom terroso */
 
-  /* WhatsApp — verde da marca aprofundado para 4.5:1 com texto branco;
-     --wa-bright guarda o verde oficial para usos não-textuais (ex.: ícone).
-     Cor funcional fixa: nunca restilizada, é o mecanismo de conversão. */
-  --wa-green:  #0D8247;
+  /* WhatsApp — verde opaco e terroso (não o verde saturado do app), puxado
+     para a mesma família da paleta. Contraste com branco: 5,1:1 (AA). */
+  --wa-green:  #5E7548;
   --wa-bright: #25D366;
   --wa-dark:   #128C7E;
   --wa-darker: #075E54;
@@ -194,7 +194,7 @@ p + p { margin-top: 1em; }
 .section-alt { background-color: var(--sand-100); }
 
 .section-dark {
-  background: var(--ink-900);
+  background: var(--brown-900);
   color: var(--white);
 }
 .section-dark .lede { color: rgba(255,255,255,0.78); }
@@ -272,14 +272,19 @@ p + p { margin-top: 1em; }
 }
 
 /* WhatsApp — convenção funcional preservada de propósito: é o botão que converte.
-   Verde aprofundado para 4,5:1 com texto branco; sombra neutra (nunca halo colorido). */
+   Verde translúcido (vidro fosco) a pedido do cliente: fundo com alpha +
+   leve desfoque atrás, para ficar bem mais claro sem virar branco liso. */
 .btn--whatsapp {
-  background: var(--wa-green);
+  background: rgba(94, 117, 72, 0.62);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(94, 117, 72, 0.75);
   color: var(--white);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
   box-shadow: var(--shadow-md);
 }
 .btn--whatsapp:hover {
-  background: #0B733F;
+  background: rgba(94, 117, 72, 0.8);
   box-shadow: var(--shadow-lg);
 }
 
@@ -304,7 +309,7 @@ p + p { margin-top: 1em; }
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 1000;
-  background: rgba(251, 247, 242, 0.92);
+  background: rgba(217, 205, 176, 0.92);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid transparent;
@@ -320,11 +325,11 @@ p + p { margin-top: 1em; }
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  height: 72px;
+  height: 104px;
 }
 
 .header__logo { flex-shrink: 0; display: flex; align-items: center; }
-.header__logo img { height: 48px; width: 48px; }
+.header__logo img { height: 80px; width: 80px; }
 
 .header__nav { display: none; align-items: center; gap: 4px; }
 .header__nav a {
@@ -365,7 +370,7 @@ p + p { margin-top: 1em; }
 
 .mobile-nav {
   position: fixed;
-  inset: 72px 0 0;
+  inset: 104px 0 0;
   background: var(--paper);
   z-index: 999;
   display: flex;
@@ -388,22 +393,40 @@ p + p { margin-top: 1em; }
 .mobile-nav a:hover { background: var(--terracotta-100); color: var(--terracotta-700); }
 .mobile-nav .btn { margin-top: 1rem; width: 100%; max-width: none; }
 .mobile-nav a.btn--whatsapp { color: var(--white); }
-.mobile-nav a.btn--whatsapp:hover { color: var(--white); background: #0B733F; }
+.mobile-nav a.btn--whatsapp:hover { color: var(--white); background: rgba(94, 117, 72, 0.8); }
 
-/* ===== 7. HERO ===== */
+/* ===== 7. HERO — foto real em tela cheia ===== */
 .hero {
   position: relative;
-  padding-top: 72px;
-  background: var(--paper);
+  padding-top: 104px;
+  min-height: clamp(520px, 86vh, 760px);
+  display: flex;
+  align-items: flex-end;
+  background: var(--brown-900);
   overflow: hidden;
+}
+
+.hero__media { position: absolute; inset: 0; z-index: 0; }
+.hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+}
+.hero__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20,16,14,0.18) 0%, rgba(43,36,32,0.4) 50%, rgba(30,24,20,0.88) 100%);
 }
 
 .hero__inner {
   display: grid;
   grid-template-columns: 1fr;
-  align-items: center;
   gap: 40px;
-  padding-block: 48px 40px;
+  padding-block: 48px 56px;
+  position: relative;
+  z-index: 1;
 }
 
 .hero__copy { position: relative; z-index: 2; min-width: 0; }
@@ -426,12 +449,20 @@ p + p { margin-top: 1em; }
 .hero__badge strong { color: var(--terracotta-700); }
 
 .hero__title {
-  color: var(--ink-900);
+  color: var(--white);
   margin-bottom: 1.25rem;
 }
-.hero__title .ink-note { font-size: clamp(1.3rem, 3.2vw, 2.1rem); display: inline-block; }
+.hero__title .ink-note {
+  font-size: clamp(1.3rem, 3.2vw, 2.1rem);
+  display: inline-block;
+  color: var(--terracotta-300);
+}
+.hero__title .ink-note::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 14' preserveAspectRatio='none'%3E%3Cpath d='M2 8 C 20 2, 35 12, 55 7 S 90 2, 118 8' fill='none' stroke='%23DBAE89' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
+}
 
 .hero__subtitle {
+  color: rgba(255,255,255,0.9);
   margin-bottom: 2rem;
 }
 
@@ -446,65 +477,22 @@ p + p { margin-top: 1em; }
 
 .hero__secondary-link {
   font-weight: 700;
-  color: var(--terracotta-700);
-  border-bottom: 2px solid var(--terracotta-400);
+  color: var(--white);
+  border-bottom: 2px solid var(--terracotta-300);
   padding-bottom: 2px;
 }
-.hero__secondary-link:hover { color: var(--terracotta-500); }
+.hero__secondary-link:hover { color: var(--terracotta-200); }
 
 .hero__social-proof {
   display: flex;
   align-items: flex-start;
   gap: 10px;
   font-size: 0.875rem;
-  color: var(--ink-500);
+  color: rgba(255,255,255,0.82);
   max-width: 42ch;
 }
-.hero__social-proof svg { flex-shrink: 0; margin-top: 2px; color: var(--terracotta-500); }
-.hero__social-proof strong { color: var(--ink-900); }
-
-/* A moldura: um arco raso e discreto em torno da foto real do estúdio —
-   eco silencioso do antigo motivo, não mais o arco monumental. */
-.hero__frame {
-  position: relative;
-  z-index: 1;
-}
-.hero__arch {
-  position: relative;
-  aspect-ratio: 4 / 5;
-  border-radius: var(--frame-radius-lg);
-  overflow: hidden;
-  background: var(--sand-100);
-  border: 1px solid var(--sand-300);
-  box-shadow: var(--shadow-lg);
-}
-.hero__arch img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: inherit;
-  object-fit: cover;
-}
-.hero__arch-plaque {
-  position: absolute;
-  left: 50%;
-  bottom: 22px;
-  transform: translateX(-50%);
-  z-index: 3;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--white);
-  color: var(--ink-900);
-  font-weight: 700;
-  font-size: 0.8125rem;
-  padding: 10px 18px;
-  border-radius: 999px;
-  text-align: center;
-  box-shadow: var(--shadow-sm);
-  max-width: calc(100% - 32px);
-}
+.hero__social-proof svg { flex-shrink: 0; margin-top: 2px; color: var(--terracotta-300); }
+.hero__social-proof strong { color: var(--white); }
 
 /* Faixa de prova — uma tira discreta de confirmação, não um plano de cor cheio */
 .proof-plaque {
@@ -811,7 +799,7 @@ p + p { margin-top: 1em; }
 
 /* ===== 16. FOOTER ===== */
 .site-footer {
-  background: var(--ink-900);
+  background: var(--brown-900);
   color: rgba(255,255,255,0.72);
   padding-block: 64px 32px;
 }
@@ -905,7 +893,6 @@ p + p { margin-top: 1em; }
 
 /* ===== 19. RESPONSIVO — telas largas ===== */
 @media (min-width: 760px) {
-  .hero__inner { grid-template-columns: 1.3fr 0.7fr; gap: 48px; }
   .sobre__grid { grid-template-columns: 0.85fr 1.15fr; gap: 64px; }
   .sobre__grid .sobre__frame { order: -1; }
   .localizacao__grid { grid-template-columns: 1fr 1fr; }
