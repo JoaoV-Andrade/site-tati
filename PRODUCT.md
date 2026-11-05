@@ -16,7 +16,7 @@ Studio de Pilates Tatiane Lasneaux is a Pilates studio in Lago Sul, Brasília, i
 
 ## Positioning
 
-Almost 20 years of continuous operation in Lago Sul, a specific and well-known neighborhood of Brasília; 5.0 rating across 77 Google reviews; clinical/therapeutic Pilates expertise (not just a generic fitness studio) combined with humanized, personalized attendance. A newer, cheaper, or more generic studio cannot truthfully claim the tenure, the clinical specialization, and the review record together.
+Almost 20 years of continuous operation in Lago Sul, a specific and well-known neighborhood of Brasília; 5.0 rating across 84 Google reviews; clinical/therapeutic Pilates expertise (not just a generic fitness studio) combined with humanized, personalized attendance. A newer, cheaper, or more generic studio cannot truthfully claim the tenure, the clinical specialization, and the review record together.
 
 ## Operating Context
 
@@ -29,7 +29,7 @@ Almost 20 years of continuous operation in Lago Sul, a specific and well-known n
 
 - Real address, phone, Instagram handle, and WhatsApp number are already correct in `js/main.js` `CONFIG` and must not be altered.
 - Real studio photography exists under `images/` (recently replaced per project history) and should be (re)wired into whichever `assets/images/...` paths the new markup/CSS references.
-- Keep all real content as-is: testimonials, service descriptions, FAQ, address, the 5.0/77-review claim. Do not invent, embellish, or remove factual claims — this is a visual/structural redesign, not a copy rewrite.
+- Keep all real content as-is: testimonials, service descriptions, FAQ, address, the 5.0/84-review claim. Do not invent, embellish, or remove factual claims — this is a visual/structural redesign, not a copy rewrite.
 - Schema.org `LocalBusiness`/`ExerciseGym` JSON-LD, SEO meta (title/description/OG/Twitter/geo tags), `llms.txt`, `robots.txt`, and `sitemap.xml` encode real business data and local-SEO work already done; preserve their factual content through any markup changes.
 - Static site: any new visual system must be deliverable in plain CSS (and vanilla JS if needed), no framework/build pipeline introduced.
 
@@ -42,14 +42,14 @@ Almost 20 years of continuous operation in Lago Sul, a specific and well-known n
 ## Evidence on Hand
 
 - Real Google reviews/testimonials already in `index.html` (Elisabeth Dantas, Paulo Leite, Patricia Nasr, Eliane, and others) and in the JSON-LD `review` array — reuse, do not fabricate new ones.
-- Real aggregate rating: 5.0, 77 reviews (JSON-LD `aggregateRating`).
+- Real aggregate rating: 5.0, 84 reviews (JSON-LD `aggregateRating`).
 - Real studio photography in `images/` (exterior, interior, classes) — the set to source new hero/section imagery from instead of stock photos.
 - Real address: SHIS QI 11 Bloco M, Loja 10 – Lago Sul, Brasília – DF, CEP 71625-620. Real phone/WhatsApp: (61) 99247-2800.
 
 ## Product Principles
 
 1. Every section earns its place by moving the visitor closer to a WhatsApp click — this is a conversion instrument, not a brochure.
-2. Trust and tenure are the core sell: nearly 20 years, 5.0/77 reviews, clinical expertise — surface these early and often rather than burying them.
+2. Trust and tenure are the core sell: nearly 20 years, 5.0/84 reviews, clinical expertise — surface these early and often rather than burying them.
 3. Never trade real content for invented content: redesign the frame, not the facts.
 4. Preserve the existing WhatsApp/GA4/Ads conversion instrumentation exactly in behavior; only extend it if a redesign adds new CTA instances.
 5. Ship something a 40-65-year-old visitor scanning quickly on a phone, from a Google Ads click, can understand and act on in seconds — clarity and warmth over cleverness.

@@ -28,7 +28,7 @@ const IMAGES = {
   logoLight: 'assets/images/logo-light.svg',  // fundo escuro (footer)
 
   /* Principal */
-  hero:    'assets/images/hero.jpg',          // 1920×1080 — fachada ou aula
+  hero:    'assets/images/hero-recepcao.jpg', // 2200×1466 — Tatiane na recepção do estúdio
   sobre:   'assets/images/sobre.jpg',         // 800×600   — ambiente do estúdio
   fachada: 'assets/images/fachada.jpg',       // 800×600   — fachada externa
 
@@ -90,17 +90,13 @@ function trackWhatsAppClick(location) {
   const menuToggle = document.querySelector('.menu-toggle');
   const mobileNav  = document.querySelector('.mobile-nav');
 
-  /* Sticky header */
-  let lastY = 0;
-  window.addEventListener('scroll', () => {
-    const y = window.scrollY;
-    if (y > 60) {
-      header.classList.add('site-header--scrolled');
-    } else {
-      header.classList.remove('site-header--scrolled');
-    }
-    lastY = y;
-  }, { passive: true });
+  /* Header transparente no topo; ganha cor ao rolar ou com o menu mobile aberto */
+  const updateHeader = () => {
+    const menuOpen = mobileNav?.classList.contains('is-open');
+    header.classList.toggle('site-header--scrolled', window.scrollY > 60 || menuOpen);
+  };
+  window.addEventListener('scroll', updateHeader, { passive: true });
+  updateHeader(); // estado correto ao recarregar a página já rolada
 
   /* Mobile menu toggle */
   if (menuToggle && mobileNav) {
@@ -109,6 +105,7 @@ function trackWhatsAppClick(location) {
       menuToggle.classList.toggle('is-open', isOpen);
       menuToggle.setAttribute('aria-expanded', isOpen);
       document.body.style.overflow = isOpen ? 'hidden' : '';
+      updateHeader();
     });
 
     /* Fechar ao clicar em link */
@@ -118,6 +115,7 @@ function trackWhatsAppClick(location) {
         menuToggle.classList.remove('is-open');
         menuToggle.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
+        updateHeader();
       });
     });
   }
@@ -131,7 +129,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     const target = document.querySelector(this.getAttribute('href'));
     if (!target) return;
     e.preventDefault();
-    const headerH = document.querySelector('.site-header')?.offsetHeight || 104;
+    const headerH = document.querySelector('.site-header')?.offsetHeight || 76;
     const top = target.getBoundingClientRect().top + window.scrollY - headerH - 8;
     window.scrollTo({ top, behavior: 'smooth' });
   });

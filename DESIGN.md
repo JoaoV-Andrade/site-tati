@@ -184,5 +184,5 @@ A quiet text line with a single top hairline (`1px solid sand-200`) and no backg
 - **Don't** run a floating circular WhatsApp button (`.wa-float`) alongside the sticky CTA bar (`.sticky-cta-bar`) — the system picked one persistent mobile CTA mechanism, not both; `.wa-float` exists in markup/CSS but stays `display:none`.
 - **Don't** use colored or glowing box-shadows, on light or dark grounds.
 - **Don't** use emoji as icon substitutes anywhere in the UI; every icon is a hand-authored inline SVG at a consistent weight.
-- **Don't** invent new testimonials, reviews, or statistics; all social proof on this page is real (Google 5.0/77 reviews, named testimonials) and must stay that way.
+- **Don't** invent new testimonials, reviews, or statistics; all social proof on this page is real (Google 5.0/84 reviews, named testimonials) and must stay that way.
 - **Don't** change the `.wa-btn` class, `data-wa-location` attributes, or the inline Google Ads conversion script at the bottom of `index.html` — they drive live ad-campaign conversion tracking.
