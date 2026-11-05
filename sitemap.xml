@@ -2,21 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://lasneauxstudiopilates.com.br/</loc>
-    <lastmod>2026-11-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-    <image:image>
-      <image:loc>https://lasneauxstudiopilates.com.br/img/hero.jpg</image:loc>
-      <image:title>Aula de Pilates no Studio Tatiane Lasneaux – Lago Sul, Brasília</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://lasneauxstudiopilates.com.br/img/tatiane.jpg</image:loc>
-      <image:title>Tatiane Lasneaux, fisioterapeuta e fundadora do estúdio</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://lasneauxstudiopilates.com.br/img/equipe.jpg</image:loc>
-      <image:title>Equipe do Studio de Pilates Tatiane Lasneaux</image:title>
-    </image:image>
+    <loc>https://www.tatianelasneauxstudiopilates.com/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <image:image><image:loc>https://www.tatianelasneauxstudiopilates.com/img/hero.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.tatianelasneauxstudiopilates.com/img/tatiane.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.tatianelasneauxstudiopilates.com/img/equipe.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.tatianelasneauxstudiopilates.com/img/mod-qualidade.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.tatianelasneauxstudiopilates.com/img/pub-gestantes.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.tatianelasneauxstudiopilates.com/img/pub-criancas.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.tatianelasneauxstudiopilates.com/img/mod-personalizado.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.tatianelasneauxstudiopilates.com/img/mod-condicionamento.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.tatianelasneauxstudiopilates.com/img/pub-atletas.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.tatianelasneauxstudiopilates.com/img/estacionamento.jpg</image:loc></image:image>
   </url>
 </urlset>

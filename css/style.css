@@ -376,6 +376,28 @@ h1 em, h2 em, .frase em { font-style: italic; font-weight: 300; }
   .estac__img { object-fit: contain; }
 }
 
+/* ---------- Perguntas frequentes ---------- */
+.faq { background: var(--linen); }
+.faq__inner { display: grid; gap: 40px; }
+.faq__list { border-top: 1px solid var(--sand); }
+.faq details { border-bottom: 1px solid var(--sand); }
+.faq summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center; gap: 24px;
+  padding: 22px 0;
+  font-family: var(--serif);
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font-family: var(--sans); font-size: 1.5rem; color: var(--terra); transition: transform 0.3s var(--ease); }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { padding-bottom: 22px; color: var(--ink-soft); max-width: 62ch; }
+.faq details a { border-bottom: 1px solid currentColor; }
+@media (min-width: 900px) {
+  .faq__inner { grid-template-columns: 0.8fr 1.2fr; gap: 88px; align-items: start; }
+}
+
 /* ---------- Depoimentos ---------- */
 .depo { background: var(--paper); text-align: center; }
 .depo__inner { display: flex; flex-direction: column; align-items: center; }

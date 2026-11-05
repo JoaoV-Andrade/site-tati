@@ -88,7 +88,7 @@ O campo `wa_button_location` indica qual botão foi clicado (`hero-primary`, `se
 
 ## Domínio real
 
-Após definir o domínio, substitua `https://lasneauxstudiopilates.com.br` em:
+Após definir o domínio, substitua `https://www.tatianelasneauxstudiopilates.com` em:
 - `<link rel="canonical">` no `<head>` do `index.html`
 - Todas as tags `og:url`, `og:image` no `<head>`
 - `robots.txt` → linha `Sitemap:`
