@@ -207,9 +207,13 @@ h1 em, h2 em, .frase em { font-style: italic; font-weight: 300; }
   position: absolute; inset: 0;
   width: 100%; height: 100%;
   object-fit: cover;
-  object-position: 38% 30%; /* celular: rosto da aluna dentro do quadro */
+  object-position: 64% 40%; /* celular: Tatiane no centro do quadro */
 }
-@media (min-width: 900px) { .hero__img { object-position: 60% 40%; } }
+/* celular/tablet: foto mais alta que a tela, ancorada embaixo, para subir o rosto da Tatiane acima do texto */
+@media (max-width: 899px) {
+  .hero__img { top: auto; bottom: 0; height: 105%; object-position: 62% 0; }
+}
+@media (min-width: 900px) { .hero__img { object-position: 50% 35%; } }
 .hero__shade {
   position: absolute; inset: 0;
   background: linear-gradient(180deg, rgba(20,16,14,0.15) 0%, rgba(20,16,14,0.25) 45%, rgba(20,16,14,0.78) 100%);
@@ -221,6 +225,10 @@ h1 em, h2 em, .frase em { font-style: italic; font-weight: 300; }
   gap: 32px;
   padding-top: calc(var(--header-h) + 40px);
   padding-bottom: clamp(40px, 7vw, 72px);
+}
+/* celular/tablet: degradê preto mais forte na metade de baixo, onde fica o texto */
+@media (max-width: 899px) {
+  .hero__shade { background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.2) 30%, rgba(0,0,0,0.65) 55%, rgba(0,0,0,0.9) 100%); }
 }
 /* H1 da página (SEO): "Studio de Pilates Lago Sul", com visual de rótulo pequeno */
 .hero__h1 { font-family: var(--sans); line-height: 1.5; }
@@ -338,6 +346,34 @@ h1 em, h2 em, .frase em { font-style: italic; font-weight: 300; }
 
 @media (min-width: 900px) {
   .sobre__grid { grid-template-columns: 0.9fr 1.1fr; gap: 88px; }
+}
+
+/* ---------- Estacionamento ---------- */
+/* Só a foto, ocupando a tela inteira.
+   Celular (tela em pé): a foto preenche tudo.
+   Computador (tela deitada): a foto aparece inteira no centro — sem cortar o texto que já vem nela —
+   e o resto da tela é preenchido pela mesma foto ampliada e desfocada. */
+.estac {
+  position: relative;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background: var(--brown);
+}
+.estac__bg {
+  position: absolute; inset: -40px;
+  background: url("../img/estacionamento.jpg") center / cover no-repeat;
+  filter: blur(28px) brightness(0.55);
+}
+.estac__img {
+  position: relative;
+  display: block;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: 50% 60%;
+}
+@media (min-aspect-ratio: 3/4) {
+  .estac__img { object-fit: contain; }
 }
 
 /* ---------- Depoimentos ---------- */
