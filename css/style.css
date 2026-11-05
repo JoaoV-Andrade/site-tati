@@ -94,12 +94,15 @@ h1 em, h2 em, .frase em { font-style: italic; font-weight: 300; }
 .pill--outline:hover { background: var(--ink); color: var(--white); }
 
 /* ---------- Header ---------- */
+/* O fundo do header surge aos poucos conforme a rolagem: o JS define
+   --hdr de 0 (transparente) a 1 (sólido) nos primeiros ~200px. */
 .site-header {
+  --hdr: 0;
   position: fixed;
   inset: 0 0 auto 0;
   z-index: 1000;
   color: var(--white);
-  transition: background-color 0.4s var(--ease), color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+  transition: color 0.6s var(--ease);
 }
 .site-header::before { /* leve sombra no topo para ler sobre a foto */
   content: '';
@@ -107,7 +110,19 @@ h1 em, h2 em, .frase em { font-style: italic; font-weight: 300; }
   inset: 0 0 -40px 0;
   background: linear-gradient(180deg, rgba(20,16,14,0.45), rgba(20,16,14,0));
   pointer-events: none;
-  transition: opacity 0.4s var(--ease);
+  opacity: calc(1 - var(--hdr));
+}
+.site-header::after { /* fundo claro com desfoque, que vai aparecendo */
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(251, 247, 242, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 rgba(43,36,32,0.08);
+  pointer-events: none;
+  opacity: var(--hdr);
 }
 .site-header__inner {
   position: relative;
@@ -126,15 +141,19 @@ h1 em, h2 em, .frase em { font-style: italic; font-weight: 300; }
 .nav a:hover { opacity: 1; }
 .header-cta { display: none; min-height: 42px; padding: 10px 22px; }
 
-.site-header.is-solid {
-  background: rgba(251, 247, 242, 0.94);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  color: var(--ink);
-  box-shadow: 0 1px 0 rgba(43,36,32,0.08);
-}
-.site-header.is-solid::before { opacity: 0; }
+/* Texto e botão trocam de cor com transição quando o fundo já está
+   mais que meio visível */
+.site-header.is-solid { color: var(--ink); }
 .site-header.is-solid .header-cta { background: var(--ink); color: var(--white); }
+.header-cta { transition: background-color 0.6s var(--ease), color 0.6s var(--ease), transform 0.3s var(--ease); }
+/* Com o menu do celular aberto: fundo sólido e sem desfoque — o desfoque
+   fazia o header sumir por cima do menu depois de rolar a página */
+.site-header.menu-open { --hdr: 1; }
+.site-header.menu-open::after {
+  background: var(--paper);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
 
 .menu-btn {
   width: 44px; height: 44px;
@@ -147,6 +166,8 @@ h1 em, h2 em, .frase em { font-style: italic; font-weight: 300; }
 .menu-mobile {
   position: fixed;
   inset: var(--header-h) 0 0 0;
+  z-index: 999; /* acima da página, logo abaixo do header (1000) */
+  overflow-y: auto;
   background: var(--paper);
   color: var(--ink);
   display: flex;
@@ -201,11 +222,19 @@ h1 em, h2 em, .frase em { font-style: italic; font-weight: 300; }
   padding-top: calc(var(--header-h) + 40px);
   padding-bottom: clamp(40px, 7vw, 72px);
 }
+/* H1 da página (SEO): "Studio de Pilates Lago Sul", com visual de rótulo pequeno */
+.hero__h1 { font-family: var(--sans); line-height: 1.5; }
+/* Slogan em destaque (parágrafo com a serifada grande) */
 .hero__title {
+  font-family: var(--serif);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
   font-size: clamp(2.6rem, 8.2vw, 6rem);
   max-width: 13ch;
   margin-bottom: 28px;
 }
+.hero__title em { font-style: italic; font-weight: 300; }
 .hero__note { margin-top: 16px; font-size: 0.875rem; color: rgba(255,255,255,0.82); }
 .hero__aside { font-size: 0.9375rem; color: rgba(255,255,255,0.85); max-width: 34ch; }
 .hero__rating { margin-bottom: 6px; color: var(--white); font-weight: 600; }

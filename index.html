@@ -3,28 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Studio de Pilates Tatiane Lasneaux | Pilates no Lago Sul, Brasília</title>
-  <meta name="description" content="Studio de Pilates Tatiane Lasneaux: Pilates clínico e personalizado no Lago Sul, Brasília, desde 2014. Mais de 20 anos de fisioterapia. ⭐ 5,0 no Google. Agende sua aula experimental.">
+  <title>Pilates Lago Sul | Studio de Pilates Tatiane Lasneaux – Brasília</title>
+  <meta name="description" content="Studio de Pilates no Lago Sul, Brasília, desde 2014. Pilates clínico e personalizado com fisioterapeutas, para idosos, gestantes, crianças e atletas. ⭐ 5,0 no Google (84 avaliações). Agende sua aula experimental pelo WhatsApp.">
+  <meta name="keywords" content="pilates lago sul, studio de pilates lago sul, estúdio de pilates lago sul, pilates no lago sul, pilates brasília, studio de pilates brasília, pilates clínico lago sul, pilates para idosos lago sul, pilates para gestantes brasília, pilates infantil brasília, pilates para dor nas costas, pilates reformer lago sul, aula experimental de pilates, fisioterapia pilates lago sul, Tatiane Lasneaux">
+  <meta name="author" content="Studio de Pilates Tatiane Lasneaux">
   <meta name="theme-color" content="#2B2420">
   <link rel="canonical" href="https://lasneauxstudiopilates.com.br/">
-  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <meta name="geo.region" content="BR-DF">
   <meta name="geo.placename" content="Lago Sul, Brasília">
   <meta name="geo.position" content="-15.839763910592373;-47.87085932883612">
+  <meta name="ICBM" content="-15.839763910592373, -47.87085932883612">
 
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:url" content="https://lasneauxstudiopilates.com.br/">
   <meta property="og:site_name" content="Studio de Pilates Tatiane Lasneaux">
-  <meta property="og:title" content="Studio de Pilates Tatiane Lasneaux | Lago Sul, Brasília">
-  <meta property="og:description" content="Pilates clínico e personalizado no Lago Sul desde 2014. ⭐ 5,0 no Google · 84 avaliações.">
+  <meta property="og:title" content="Pilates no Lago Sul | Studio de Pilates Tatiane Lasneaux">
+  <meta property="og:description" content="Pilates clínico e personalizado no Lago Sul, Brasília, desde 2014. ⭐ 5,0 no Google · 84 avaliações. Agende sua aula experimental.">
   <meta property="og:image" content="https://lasneauxstudiopilates.com.br/assets/images/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Studio de Pilates Tatiane Lasneaux no Lago Sul, Brasília">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pilates no Lago Sul | Studio de Pilates Tatiane Lasneaux">
+  <meta name="twitter:description" content="Pilates clínico e personalizado no Lago Sul, Brasília, desde 2014. ⭐ 5,0 no Google.">
   <meta name="twitter:image" content="https://lasneauxstudiopilates.com.br/assets/images/og-image.jpg">
 
+  <!-- Carrega primeiro a foto do topo (velocidade conta para o Google e para o Google Ads) -->
+  <link rel="preload" as="image" href="img/hero.jpg" fetchpriority="high">
   <!-- Google tag (gtag.js) — conta Google Ads -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18181878048"></script>
   <script>
@@ -36,6 +43,7 @@
   </script>
 
   <link rel="icon" type="image/svg+xml" href="img/logo.svg">
+  <link rel="apple-touch-icon" href="img/logo.svg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,31 +54,90 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ExerciseGym",
-    "name": "Studio de Pilates Tatiane Lasneaux",
-    "alternateName": ["Pilates Lago Sul", "Lasneaux Studio Pilates"],
-    "description": "Pilates clínico e personalizado no Lago Sul, Brasília, desde 2014, fundado pela fisioterapeuta Tatiane Lasneaux.",
-    "slogan": "Revitalize seu corpo e mente com Pilates.",
-    "founder": { "@type": "Person", "name": "Tatiane Lasneaux" },
-    "foundingDate": "2014",
-    "url": "https://lasneauxstudiopilates.com.br",
-    "telephone": "+55-61-99247-2800",
-    "priceRange": "$$",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "SHIS QI 11 Bloco M, Loja 10",
-      "addressLocality": "Lago Sul",
-      "addressRegion": "DF",
-      "postalCode": "71625-620",
-      "addressCountry": "BR"
-    },
-    "geo": { "@type": "GeoCoordinates", "latitude": -15.839831, "longitude": -47.8708486 },
-    "openingHoursSpecification": [
-      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "06:00", "closes": "21:00" },
-      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:00", "closes": "14:00" }
-    ],
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "84", "bestRating": "5", "worstRating": "1" },
-    "sameAs": ["https://www.instagram.com/lasneaux_studiopilates"]
+    "@graph": [
+      {
+        "@type": "ExerciseGym",
+        "@id": "https://lasneauxstudiopilates.com.br/#estudio",
+        "name": "Studio de Pilates Tatiane Lasneaux",
+        "alternateName": ["Pilates Lago Sul", "Studio de Pilates Lago Sul", "Lasneaux Studio Pilates", "Tatiane Lasneaux Studio Pilates"],
+        "description": "Studio de Pilates no Lago Sul, Brasília, desde 2014. Pilates clínico e personalizado com fisioterapeutas, para idosos, gestantes, crianças, sedentários, profissionais ativos e atletas.",
+        "slogan": "Revitalize seu corpo e mente com Pilates.",
+        "url": "https://lasneauxstudiopilates.com.br/",
+        "logo": "https://lasneauxstudiopilates.com.br/img/logo.svg",
+        "image": [
+          "https://lasneauxstudiopilates.com.br/img/hero.jpg",
+          "https://lasneauxstudiopilates.com.br/img/tatiane.jpg",
+          "https://lasneauxstudiopilates.com.br/img/equipe.jpg",
+          "https://lasneauxstudiopilates.com.br/assets/images/og-image.jpg"
+        ],
+        "telephone": "+55-61-99247-2800",
+        "priceRange": "$$",
+        "foundingDate": "2014",
+        "founder": { "@type": "Person", "name": "Tatiane Lasneaux", "jobTitle": "Fisioterapeuta" },
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "SHIS QI 11 Bloco M, Loja 10",
+          "addressLocality": "Brasília",
+          "addressRegion": "DF",
+          "postalCode": "71625-620",
+          "addressCountry": "BR"
+        },
+        "geo": { "@type": "GeoCoordinates", "latitude": -15.839831, "longitude": -47.8708486 },
+        "hasMap": "https://www.google.com/maps/place/Pilates+Lago+Sul+-+Studio+Tatiane+Lasneaux/@-15.839831,-47.8708486,17z",
+        "areaServed": [
+          { "@type": "Place", "name": "Lago Sul, Brasília – DF" },
+          { "@type": "Place", "name": "Jardim Botânico, Brasília – DF" },
+          { "@type": "Place", "name": "Brasília – DF" }
+        ],
+        "openingHoursSpecification": [
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "06:00", "closes": "21:00" }
+        ],
+        "amenityFeature": [
+          { "@type": "LocationFeatureSpecification", "name": "Estacionamento gratuito", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Avaliação postural na primeira visita", "value": true }
+        ],
+        "knowsAbout": ["Pilates", "Pilates clínico", "Pilates para idosos", "Pilates para gestantes", "Pilates infantil", "Reabilitação de lesões", "Postura", "Coluna vertebral"],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Aulas de Pilates no Lago Sul",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pilates para idosos", "areaServed": "Lago Sul, Brasília" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pilates para gestantes", "areaServed": "Lago Sul, Brasília" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pilates para crianças e pré-adolescentes", "areaServed": "Lago Sul, Brasília" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pilates para sedentários", "areaServed": "Lago Sul, Brasília" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pilates para profissionais ativos", "areaServed": "Lago Sul, Brasília" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pilates para atletas", "areaServed": "Lago Sul, Brasília" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Aula experimental de Pilates", "areaServed": "Lago Sul, Brasília" } }
+          ]
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "84", "bestRating": "5", "worstRating": "1" },
+        "review": [
+          { "@type": "Review", "author": { "@type": "Person", "name": "Bárbara Torres" }, "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "reviewBody": "O que mais gosto do estúdio é que as profissionais prezam muito pela técnica correta e pela individualidade de cada pessoa, adaptando os exercícios com muita atenção." },
+          { "@type": "Review", "author": { "@type": "Person", "name": "Elisabeth Dantas" }, "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "reviewBody": "Sou aluna do studio de pilates há mais de 10 anos. Adoro o espaço, e as professoras são excelentes e muito atenciosas. O local é de muita descontração e alegria." },
+          { "@type": "Review", "author": { "@type": "Person", "name": "Paulo Leite" }, "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "reviewBody": "Excelente atendimento. Melhor estúdio de pilates do DF. Um dos melhores do país. Profissionais com excelente formação." },
+          { "@type": "Review", "author": { "@type": "Person", "name": "Patricia Nasr" }, "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "reviewBody": "Adoro! Ambiente muito limpo e arejado." },
+          { "@type": "Review", "author": { "@type": "Person", "name": "Eliane Brandão" }, "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "reviewBody": "Excelente studio, as professoras muito dedicadas e gentis." }
+        ],
+        "sameAs": ["https://www.instagram.com/lasneaux_studiopilates"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://lasneauxstudiopilates.com.br/#site",
+        "url": "https://lasneauxstudiopilates.com.br/",
+        "name": "Studio de Pilates Tatiane Lasneaux",
+        "inLanguage": "pt-BR",
+        "publisher": { "@id": "https://lasneauxstudiopilates.com.br/#estudio" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://lasneauxstudiopilates.com.br/#pagina",
+        "url": "https://lasneauxstudiopilates.com.br/",
+        "name": "Pilates Lago Sul | Studio de Pilates Tatiane Lasneaux – Brasília",
+        "isPartOf": { "@id": "https://lasneauxstudiopilates.com.br/#site" },
+        "about": { "@id": "https://lasneauxstudiopilates.com.br/#estudio" },
+        "inLanguage": "pt-BR"
+      }
+    ]
   }
   </script>
 </head>
@@ -100,35 +167,36 @@
         <span></span><span></span>
       </button>
     </div>
-
-    <nav class="menu-mobile" id="menu-mobile" aria-label="Menu">
-      <a href="#inicio">Início</a>
-      <a href="#sobre">Sobre</a>
-      <a href="#publico">Para quem é</a>
-        <a href="#beneficios">Benefícios</a>
-      <a href="#depoimentos">Depoimentos</a>
-      <a href="#localizacao">Localização</a>
-      <a class="pill pill--dark" href="https://wa.me/5561992472800?text=Ol%C3%A1%2C%20quero%20agendar%20minha%20aula%20experimental" target="_blank" rel="noopener">Agendar aula experimental</a>
-    </nav>
   </header>
+
+  <!-- Menu do celular fora do header: o desfoque do header sólido prenderia um elemento fixo dentro dele -->
+  <nav class="menu-mobile" id="menu-mobile" aria-label="Menu">
+    <a href="#inicio">Início</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#publico">Para quem é</a>
+    <a href="#beneficios">Benefícios</a>
+    <a href="#depoimentos">Depoimentos</a>
+    <a href="#localizacao">Localização</a>
+    <a class="pill pill--dark" href="https://wa.me/5561992472800?text=Ol%C3%A1%2C%20quero%20agendar%20minha%20aula%20experimental" target="_blank" rel="noopener">Agendar aula experimental</a>
+  </nav>
 
   <main id="conteudo">
 
     <!-- ═════════ HERO ═════════ -->
     <section class="hero" id="inicio" aria-label="Apresentação">
-      <img class="hero__img" src="img/hero.jpg" alt="Aluna treinando no reformer no Studio de Pilates Tatiane Lasneaux" fetchpriority="high">
+      <img class="hero__img" src="img/hero.jpg" alt="Aula de Pilates no reformer no Studio de Pilates Tatiane Lasneaux, no Lago Sul, Brasília" fetchpriority="high">
       <div class="hero__shade" aria-hidden="true"></div>
 
       <div class="wrap hero__content">
         <div class="hero__main">
-          <p class="eyebrow eyebrow--light">Studio de Pilates Tatiane Lasneaux · Lago Sul</p>
-          <h1 class="hero__title">Revitalize seu corpo e <em>mente</em> com Pilates.</h1>
+          <h1 class="eyebrow eyebrow--light hero__h1">Studio de Pilates Lago Sul</h1>
+          <p class="hero__title">Revitalize seu corpo e <em>mente</em> com Pilates.</p>
           <a class="pill pill--light" href="https://wa.me/5561992472800?text=Ol%C3%A1%2C%20quero%20agendar%20minha%20aula%20experimental" target="_blank" rel="noopener">Agende sua aula experimental</a>
           <p class="hero__note">Primeira vez? Agende sua aula experimental pelo WhatsApp.</p>
         </div>
         <div class="hero__aside">
           <p class="hero__rating"><span class="stars" aria-hidden="true">★★★★★</span> 5,0 no Google · 84 avaliações</p>
-          <p>Pilates clínico e personalizado em Brasília.<br>Flexibilidade, força, postura e equilíbrio.</p>
+          <p>Pilates clínico e personalizado no Lago Sul.<br>Flexibilidade, força, postura e equilíbrio.</p>
         </div>
       </div>
     </section>
@@ -139,22 +207,22 @@
         <header class="section-head">
           <p class="eyebrow">Para quem é</p>
           <h2 id="pub-title">Pilates para cada <em>fase da vida</em></h2>
-          <p class="lede">Cada aluno passa por uma avaliação individual e recebe um plano pensado para o seu corpo e os seus objetivos.</p>
+          <p class="lede">Aulas de Pilates no Lago Sul para todas as idades: cada aluno passa por uma avaliação individual e recebe um plano pensado para o seu corpo e os seus objetivos.</p>
         </header>
 
         <ul class="pub__grid">
           <li class="pub__card">
-            <figure class="pub__photo"><img src="img/mod-qualidade.jpg" alt="Aluna sênior praticando Pilates no reformer" loading="lazy"></figure>
+            <figure class="pub__photo"><img src="img/mod-qualidade.jpg" alt="Aluna sênior em aula de Pilates para idosos no Lago Sul" loading="lazy"></figure>
             <h3>Idosos</h3>
             <p>Aulas personalizadas para manter a mobilidade, a força e o equilíbrio, fundamentais para a independência e a qualidade de vida na terceira idade.</p>
           </li>
           <li class="pub__card">
-            <figure class="pub__photo"><img src="img/pub-gestantes.jpg" alt="Gestantes em aula de Pilates com bola" loading="lazy"></figure>
+            <figure class="pub__photo"><img src="img/pub-gestantes.jpg" alt="Gestantes em aula de Pilates para gestantes no Lago Sul, Brasília" loading="lazy"></figure>
             <h3>Gestantes</h3>
             <p>Um ambiente seguro e acolhedor, com aulas adaptadas para manter a forma, a força e a flexibilidade, preparando para o parto normal e para uma recuperação mais rápida.</p>
           </li>
           <li class="pub__card">
-            <figure class="pub__photo"><img src="img/pub-criancas.jpg" alt="Sala do estúdio com os aparelhos de Pilates" loading="lazy"></figure>
+            <figure class="pub__photo"><img src="img/pub-criancas.jpg" alt="Sala do studio de Pilates no Lago Sul com aparelhos reformer" loading="lazy"></figure>
             <h3>Crianças e pré-adolescentes</h3>
             <p>Programas a partir de 8 anos para um desenvolvimento saudável e equilibrado, com mais concentração, coordenação motora e uma boa postura.</p>
           </li>
@@ -237,7 +305,7 @@
     <section class="section sobre" id="sobre" aria-labelledby="sobre-title">
       <div class="wrap sobre__grid">
         <figure class="sobre__photo">
-          <img src="img/tatiane.jpg" alt="Tatiane Lasneaux, fisioterapeuta e fundadora do estúdio" loading="lazy">
+          <img src="img/tatiane.jpg" alt="Tatiane Lasneaux, fisioterapeuta e fundadora do Studio de Pilates no Lago Sul" loading="lazy">
         </figure>
 
         <div class="sobre__text">
@@ -301,7 +369,7 @@
     <!-- ═════════ COMECE SUA JORNADA ═════════ -->
     <section class="jornada" id="jornada" aria-labelledby="jornada-title">
       <figure class="jornada__media">
-        <img src="img/equipe.jpg" alt="Tatiane Lasneaux e a equipe de professoras do estúdio" loading="lazy">
+        <img src="img/equipe.jpg" alt="Tatiane Lasneaux e a equipe de professoras do Studio de Pilates Lago Sul" loading="lazy">
       </figure>
       <div class="jornada__content">
         <h2 id="jornada-title">Comece sua <em>jornada</em></h2>
@@ -333,7 +401,7 @@
               CEP 71625-620
             </address>
             <dl class="local__info">
-              <div><dt>Aulas</dt><dd>Segunda a sexta, 6h às 21h<br>Sábado, 8h às 14h</dd></div>
+              <div><dt>Aulas</dt><dd>Segunda a sexta, 6h às 21h</dd></div>
               <div><dt>Estacionamento</dt><dd>Amplo e gratuito para alunos e visitantes</dd></div>
               <div><dt>WhatsApp</dt><dd><a href="https://wa.me/5561992472800" target="_blank" rel="noopener">(61) 99247-2800</a></dd></div>
             </dl>
@@ -378,7 +446,6 @@
         <h3>Horários</h3>
         <ul>
           <li>Segunda a sexta, 6h às 21h</li>
-          <li>Sábado, 8h às 14h</li>
         </ul>
       </div>
 

@@ -21,17 +21,27 @@
   const menuBtn = document.querySelector('.menu-btn');
   const menu    = document.getElementById('menu-mobile');
 
+  /* O fundo vai aparecendo aos poucos entre 20px e 220px de rolagem
+     (--hdr de 0 a 1); texto e botão trocam de cor na metade do caminho. */
+  const FADE_START = 20, FADE_LEN = 200;
+  let ticking = false;
   const updateHeader = () => {
+    ticking = false;
     const open = menu && menu.classList.contains('is-open');
-    header.classList.toggle('is-solid', window.scrollY > 40 || open);
+    const p = open ? 1 : Math.min(1, Math.max(0, (window.scrollY - FADE_START) / FADE_LEN));
+    header.style.setProperty('--hdr', p.toFixed(3));
+    header.classList.toggle('is-solid', p > 0.5);
   };
-  window.addEventListener('scroll', updateHeader, { passive: true });
+  window.addEventListener('scroll', () => {
+    if (!ticking) { ticking = true; requestAnimationFrame(updateHeader); }
+  }, { passive: true });
   updateHeader();
 
   const setMenu = (open) => {
     menu.classList.toggle('is-open', open);
     menuBtn.setAttribute('aria-expanded', String(open));
     menuBtn.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+    header.classList.toggle('menu-open', open);
     document.body.style.overflow = open ? 'hidden' : '';
     updateHeader();
   };
