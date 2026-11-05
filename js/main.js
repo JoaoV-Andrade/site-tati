@@ -1,226 +1,97 @@
-/* ============================================================
-   Studio de Pilates Tatiane Lasneaux
-   main.js — Configuração central + comportamento da página
-   ============================================================ */
+/* Studio de Pilates Tatiane Lasneaux */
+(function () {
+  'use strict';
 
-/* ===== CONFIGURAÇÃO CENTRAL — edite aqui ===== */
-const CONFIG = {
-  /* Link de WhatsApp com mensagem pré-preenchida (não altere o link, só a mensagem se necessário) */
-  whatsappLink: 'https://wa.me/5561992472800?text=Quero%20marcar%20minha%20aula%20experimental',
-
-  /* Informações de contato */
-  phone:      '(61) 99247-2800',
-  instagram:  'lasneaux_studiopilates',
-  address:    'SHIS QI 11 Bloco M, Loja 10 – Lago Sul, Brasília – DF, CEP 71625-620',
-
-  /* ── Tracking ── Substitua pelos IDs reais antes de lançar ──────────── */
-  gtmId:                 'GTM-XXXXXXX',   // Google Tag Manager
-  ga4Id:                 'G-XXXXXXXXXX',  // Google Analytics 4
-  googleAdsId:           'AW-XXXXXXXXX',  // Conta Google Ads
-  googleAdsConversionId: 'AW-XXXXXXXXX/XXXXXXXXXXX', // ID/rótulo da conversão
-  /* ─────────────────────────────────────────────────────────────────────── */
-};
-
-/* ===== CAMINHOS DE IMAGENS — edite aqui para trocar fotos ===== */
-const IMAGES = {
-  /* Logos */
-  logoDark:  'assets/images/logo-dark.svg',   // fundo claro (header)
-  logoLight: 'assets/images/logo-light.svg',  // fundo escuro (footer)
-
-  /* Principal */
-  hero:    'assets/images/hero-recepcao.jpg', // 2200×1466 — Tatiane na recepção do estúdio
-  sobre:   'assets/images/sobre.jpg',         // 800×600   — ambiente do estúdio
-  fachada: 'assets/images/fachada.jpg',       // 800×600   — fachada externa
-
-  /* Serviços (600×400 cada) */
-  services: {
-    clinico:         'assets/images/services/clinico.jpg',
-    reabilitacao:    'assets/images/services/reabilitacao.jpg',
-    alongamento:     'assets/images/services/alongamento.jpg',
-    condicionamento: 'assets/images/services/condicionamento.jpg',
-    qualidade:       'assets/images/services/qualidade.jpg',
-    personalizado:   'assets/images/services/personalizado.jpg',
-  },
-
-  /* Avatares de depoimentos (120×120 cada) */
-  testimonials: {
-    elisabeth: 'assets/images/testimonials/elisabeth.jpg',
-    paulo:     'assets/images/testimonials/paulo.jpg',
-    patricia:  'assets/images/testimonials/patricia.jpg',
-    eliane:    'assets/images/testimonials/eliane.jpg',
-  },
-};
-
-/* ============================================================
-   TRACKING DE CLIQUES NO WHATSAPP
-   Todos os <a class="wa-btn"> disparam este evento.
-   ============================================================ */
-function trackWhatsAppClick(location) {
-  /* Google Analytics 4 */
-  if (typeof gtag !== 'undefined') {
-    gtag('event', 'whatsapp_click', {
-      event_category: 'engagement',
-      event_label:    location,
-      value:          1,
-    });
-
-    /* Conversão Google Ads */
-    if (CONFIG.googleAdsConversionId && !CONFIG.googleAdsConversionId.includes('XXXXX')) {
-      gtag('event', 'conversion', {
-        send_to: CONFIG.googleAdsConversionId,
+  /* Conversão "CLIQUE WPP" do Google Ads em todos os links de WhatsApp.
+     Os links abrem em nova aba, então só registramos o evento, sem
+     bloquear a navegação. */
+  document.querySelectorAll('a[href*="wa.me/"]').forEach((link) => {
+    link.addEventListener('click', () => {
+      if (typeof window.gtag !== 'function') return;
+      window.gtag('event', 'conversion', {
+        send_to: 'AW-18181878048/ZLBYCI3R378cEKDi5d1D',
+        value: 1.0,
+        currency: 'BRL'
       });
-    }
-  }
-
-  /* Google Tag Manager dataLayer */
-  if (typeof dataLayer !== 'undefined') {
-    dataLayer.push({
-      event:              'whatsapp_click',
-      wa_button_location: location,
-      wa_link:            CONFIG.whatsappLink,
     });
-  }
-}
+  });
 
-/* ============================================================
-   HEADER — SCROLL + MENU MOBILE
-   ============================================================ */
-(function initHeader() {
-  const header     = document.querySelector('.site-header');
-  const menuToggle = document.querySelector('.menu-toggle');
-  const mobileNav  = document.querySelector('.mobile-nav');
+  /* Header: transparente sobre o hero, sólido ao rolar ou com o menu aberto */
+  const header  = document.querySelector('.site-header');
+  const menuBtn = document.querySelector('.menu-btn');
+  const menu    = document.getElementById('menu-mobile');
 
-  /* Header transparente no topo; ganha cor ao rolar ou com o menu mobile aberto */
   const updateHeader = () => {
-    const menuOpen = mobileNav?.classList.contains('is-open');
-    header.classList.toggle('site-header--scrolled', window.scrollY > 60 || menuOpen);
+    const open = menu && menu.classList.contains('is-open');
+    header.classList.toggle('is-solid', window.scrollY > 40 || open);
   };
   window.addEventListener('scroll', updateHeader, { passive: true });
-  updateHeader(); // estado correto ao recarregar a página já rolada
+  updateHeader();
 
-  /* Mobile menu toggle */
-  if (menuToggle && mobileNav) {
-    menuToggle.addEventListener('click', () => {
-      const isOpen = mobileNav.classList.toggle('is-open');
-      menuToggle.classList.toggle('is-open', isOpen);
-      menuToggle.setAttribute('aria-expanded', isOpen);
-      document.body.style.overflow = isOpen ? 'hidden' : '';
-      updateHeader();
-    });
-
-    /* Fechar ao clicar em link */
-    mobileNav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileNav.classList.remove('is-open');
-        menuToggle.classList.remove('is-open');
-        menuToggle.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-        updateHeader();
-      });
-    });
+  const setMenu = (open) => {
+    menu.classList.toggle('is-open', open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+    document.body.style.overflow = open ? 'hidden' : '';
+    updateHeader();
+  };
+  if (menuBtn && menu) {
+    menuBtn.addEventListener('click', () => setMenu(!menu.classList.contains('is-open')));
+    menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
   }
-})();
 
-/* ============================================================
-   SMOOTH SCROLL para âncoras internas
-   ============================================================ */
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    const target = document.querySelector(this.getAttribute('href'));
-    if (!target) return;
-    e.preventDefault();
-    const headerH = document.querySelector('.site-header')?.offsetHeight || 76;
-    const top = target.getBoundingClientRect().top + window.scrollY - headerH - 8;
-    window.scrollTo({ top, behavior: 'smooth' });
-  });
-});
-
-/* ============================================================
-   ANIMAÇÕES DE ENTRADA (Intersection Observer)
-   ============================================================ */
-(function initAnimations() {
-  const elements = document.querySelectorAll('.fade-in');
-  if (!elements.length) return;
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
-  );
-
-  elements.forEach(el => observer.observe(el));
-})();
-
-/* ============================================================
-   FAQ — ACCORDION
-   ============================================================ */
-(function initFAQ() {
-  document.querySelectorAll('.faq-item__question').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item     = btn.closest('.faq-item');
-      const isOpen   = item.classList.contains('is-open');
-      const answer   = item.querySelector('.faq-item__answer');
-
-      /* Fecha todos */
-      document.querySelectorAll('.faq-item.is-open').forEach(openItem => {
-        openItem.classList.remove('is-open');
-        openItem.querySelector('.faq-item__question').setAttribute('aria-expanded', 'false');
-      });
-
-      /* Abre o clicado (se estava fechado) */
-      if (!isOpen) {
-        item.classList.add('is-open');
-        btn.setAttribute('aria-expanded', 'true');
+  /* Modalidades: ao escolher um item, abre a descrição e troca a foto */
+  const items  = document.querySelectorAll('.mod__item');
+  const figImg = document.querySelector('.mod__figure img');
+  items.forEach((item) => {
+    item.addEventListener('click', () => {
+      if (item.classList.contains('is-active')) return;
+      items.forEach((i) => { i.classList.remove('is-active'); i.setAttribute('aria-selected', 'false'); });
+      item.classList.add('is-active');
+      item.setAttribute('aria-selected', 'true');
+      if (figImg) {
+        figImg.classList.add('is-fading');
+        setTimeout(() => {
+          figImg.src = item.dataset.img;
+          figImg.alt = item.dataset.alt || '';
+          figImg.classList.remove('is-fading');
+        }, 220);
       }
     });
   });
-})();
+  /* pré-carrega as fotos das modalidades */
+  items.forEach((i) => { const im = new Image(); im.src = i.dataset.img; });
 
-/* ============================================================
-   WHATSAPP — TRACKING em todos os botões
-   ============================================================ */
-(function initWATracking() {
-  document.querySelectorAll('.wa-btn').forEach(btn => {
-    btn.addEventListener('click', function () {
-      const location = this.dataset.waLocation || 'unknown';
-      trackWhatsAppClick(location);
-    });
-  });
-})();
+  /* Depoimentos: carrossel simples com avanço automático */
+  const slides = document.querySelectorAll('.depo__slide');
+  const cur    = document.querySelector('[data-depo-current]');
+  const tot    = document.querySelector('[data-depo-total]');
+  let idx = 0, timer = null;
+  if (tot) tot.textContent = slides.length;
+  const show = (n) => {
+    if (!slides.length) return;
+    idx = (n + slides.length) % slides.length;
+    slides.forEach((s, i) => s.classList.toggle('is-active', i === idx));
+    if (cur) cur.textContent = idx + 1;
+  };
+  const restart = () => { clearInterval(timer); timer = setInterval(() => show(idx + 1), 7000); };
+  const prev = document.querySelector('[data-depo-prev]');
+  const next = document.querySelector('[data-depo-next]');
+  if (prev) prev.addEventListener('click', () => { show(idx - 1); restart(); });
+  if (next) next.addEventListener('click', () => { show(idx + 1); restart(); });
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) restart();
 
-/* ============================================================
-   STICKY CTA BAR MOBILE — oculta quando hero está visível
-   ============================================================ */
-(function initStickyBar() {
-  const bar  = document.querySelector('.sticky-cta-bar');
-  const hero = document.querySelector('.hero');
-  if (!bar || !hero) return;
+  /* Animação de entrada suave */
+  const revealEls = document.querySelectorAll('.section-head, .mod, .benef__grid, .sobre__photo, .sobre__text, .depo__inner, .jornada__content, .frase p, .local__grid');
+  if ('IntersectionObserver' in window) {
+    revealEls.forEach((el) => el.classList.add('reveal'));
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach((el) => io.observe(el));
+  }
 
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      bar.style.display = entry.isIntersecting ? 'none' : '';
-    },
-    { threshold: 0.1 }
-  );
-  observer.observe(hero);
-})();
-
-/* ============================================================
-   HELPER — substitui src de imagens se arquivo existir
-   (Útil durante desenvolvimento: imagens faltando mostram placeholder)
-   ============================================================ */
-(function handleBrokenImages() {
-  document.querySelectorAll('img[data-placeholder]').forEach(img => {
-    img.addEventListener('error', function () {
-      if (!this.src.includes('placeholder')) {
-        this.src = this.dataset.placeholder;
-      }
-    }, { once: true });
-  });
+  /* Ano no rodapé */
+  const y = document.querySelector('[data-year]');
+  if (y) y.textContent = new Date().getFullYear();
 })();
