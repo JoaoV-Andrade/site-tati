@@ -40,28 +40,6 @@
     menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
   }
 
-  /* Modalidades: ao escolher um item, abre a descrição e troca a foto */
-  const items  = document.querySelectorAll('.mod__item');
-  const figImg = document.querySelector('.mod__figure img');
-  items.forEach((item) => {
-    item.addEventListener('click', () => {
-      if (item.classList.contains('is-active')) return;
-      items.forEach((i) => { i.classList.remove('is-active'); i.setAttribute('aria-selected', 'false'); });
-      item.classList.add('is-active');
-      item.setAttribute('aria-selected', 'true');
-      if (figImg) {
-        figImg.classList.add('is-fading');
-        setTimeout(() => {
-          figImg.src = item.dataset.img;
-          figImg.alt = item.dataset.alt || '';
-          figImg.classList.remove('is-fading');
-        }, 220);
-      }
-    });
-  });
-  /* pré-carrega as fotos das modalidades */
-  items.forEach((i) => { const im = new Image(); im.src = i.dataset.img; });
-
   /* Depoimentos: carrossel simples com avanço automático */
   const slides = document.querySelectorAll('.depo__slide');
   const cur    = document.querySelector('[data-depo-current]');
@@ -82,7 +60,7 @@
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) restart();
 
   /* Animação de entrada suave */
-  const revealEls = document.querySelectorAll('.section-head, .mod, .benef__grid, .sobre__photo, .sobre__text, .depo__inner, .jornada__content, .frase p, .local__grid');
+  const revealEls = document.querySelectorAll('.section-head, .pub__grid, .benef__grid, .sobre__photo, .sobre__text, .depo__inner, .jornada__content, .frase p, .local__grid');
   if ('IntersectionObserver' in window) {
     revealEls.forEach((el) => el.classList.add('reveal'));
     const io = new IntersectionObserver((entries) => {

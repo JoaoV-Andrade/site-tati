@@ -118,17 +118,7 @@ h1 em, h2 em, .frase em { font-style: italic; font-weight: 300; }
   gap: 24px;
 }
 .brand { display: flex; flex-direction: column; line-height: 1; }
-/* Logo: sobre a foto do hero ganha um fundo claro discreto (o nome em roxo
-   não lê sobre o escuro); com o header sólido o fundo some. */
-.brand--logo {
-  padding: 4px 12px;
-  border-radius: 14px;
-  background: rgba(251, 247, 242, 0.92);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-  transition: background-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
-}
 .brand--logo img { height: 60px; width: auto; }
-.site-header.is-solid .brand--logo { background: transparent; box-shadow: none; }
 .brand__name { font-family: var(--serif); font-size: 1.375rem; letter-spacing: 0.01em; }
 .brand__sub { margin-top: 5px; font-size: 0.625rem; font-weight: 600; letter-spacing: 0.32em; text-transform: uppercase; opacity: 0.8; }
 .nav { display: none; gap: 30px; font-size: 0.9375rem; }
@@ -226,59 +216,35 @@ h1 em, h2 em, .frase em { font-style: italic; font-weight: 300; }
   .hero__aside { text-align: right; }
 }
 
-/* ---------- Modalidades ---------- */
+/* ---------- Para quem é (cartões com foto) ---------- */
 .modalidades { background: var(--paper); }
-.mod {
+.pub__grid {
+  list-style: none;
   display: grid;
-  gap: 32px;
-  margin-bottom: 48px;
+  gap: 40px 28px;
 }
-.mod__figure {
-  order: -1; /* foto em cima no celular */
+.pub__photo {
   aspect-ratio: 4 / 3;
   border-radius: 18px;
   overflow: hidden;
   background: var(--sand);
+  margin-bottom: 20px;
 }
-.mod__figure img {
+.pub__photo img {
   width: 100%; height: 100%;
   object-fit: cover;
-  transition: opacity 0.35s var(--ease);
+  transition: transform 0.8s var(--ease);
 }
-.mod__figure img.is-fading { opacity: 0; }
-.mod__list { border-top: 1px solid var(--sand); }
-.mod__item {
-  width: 100%;
-  display: block;
-  text-align: left;
-  padding: 22px 0;
-  border-bottom: 1px solid var(--sand);
-}
-.mod__name {
-  display: block;
-  font-family: var(--serif);
-  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
-  line-height: 1.15;
-  color: var(--ink-mute);
-  transition: color 0.3s var(--ease);
-}
-.mod__item:hover .mod__name, .mod__item.is-active .mod__name { color: var(--ink); }
-.mod__item.is-active .mod__name { font-style: italic; }
-.mod__desc {
-  display: block;
-  max-height: 0;
-  overflow: hidden;
-  color: var(--ink-soft);
-  max-width: 48ch;
-  transition: max-height 0.45s var(--ease), margin 0.45s var(--ease);
-}
-.mod__item.is-active .mod__desc { max-height: 12em; margin-top: 10px; }
+.pub__card:hover .pub__photo img { transform: scale(1.04); }
+.pub__card h3 { font-size: clamp(1.4rem, 2.2vw, 1.7rem); margin-bottom: 10px; }
+.pub__card p { color: var(--ink-soft); font-size: 0.9375rem; max-width: 44ch; }
 
-@media (min-width: 900px) {
-  .mod { grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
-  .mod__figure { order: 0; aspect-ratio: 4 / 5; position: sticky; top: calc(var(--header-h) + 24px); }
+@media (min-width: 640px) {
+  .pub__grid { grid-template-columns: 1fr 1fr; }
 }
-
+@media (min-width: 1000px) {
+  .pub__grid { grid-template-columns: repeat(3, 1fr); gap: 56px 32px; }
+}
 /* ---------- Benefícios do Pilates ---------- */
 .benef { background: var(--brown); color: var(--white); }
 .benef h2 em { color: var(--terra-lt); }
@@ -293,14 +259,15 @@ h1 em, h2 em, .frase em { font-style: italic; font-weight: 300; }
   padding: 28px 0;
   border-bottom: 1px solid rgba(255,255,255,0.16);
 }
-.benef__grid li::before {
-  content: counter(benef, decimal-leading-zero);
+/* Ícone de cada benefício — Material Symbols (Google Fonts, Apache 2.0),
+   variante Outlined peso 300, embutido como SVG */
+.benef__icon {
   display: block;
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 1rem;
-  color: var(--terra-lt);
-  margin-bottom: 12px;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 18px;
+  margin-left: -6px; /* compensa o respiro interno do ícone */
+  fill: var(--terra-lt);
 }
 .benef__grid h3 { font-size: clamp(1.35rem, 2.2vw, 1.6rem); margin-bottom: 10px; }
 .benef__grid p { color: rgba(255,255,255,0.78); font-size: 0.9375rem; max-width: 40ch; }
